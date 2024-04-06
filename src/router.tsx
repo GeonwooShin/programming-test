@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '@pages/Home';
 import NotFound from '@pages/NotFound';
@@ -16,7 +16,16 @@ const routes: routeElement[] = [
     path: '/',
     element: <RootPage />,
     errorElement: <NotFound />,
-    children: [{ path: '', element: <Home /> }],
+    children: [
+      {
+        path: '',
+        element: (
+          <Suspense fallback={<div></div>}>
+            <Home />
+          </Suspense>
+        ),
+      },
+    ],
   },
 ];
 
