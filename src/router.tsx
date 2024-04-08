@@ -1,8 +1,10 @@
-import { ReactNode, Suspense } from 'react';
+import { ReactNode } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '@pages/Home';
 import NotFound from '@pages/NotFound';
 import RootPage from '@pages/RootPage';
+import Movie from '@pages/Movie';
+import Favorite from '@pages/Favorite';
 
 type routeElement = {
   path: string;
@@ -18,12 +20,16 @@ const routes: routeElement[] = [
     errorElement: <NotFound />,
     children: [
       {
-        path: '',
-        element: (
-          <Suspense fallback={<div></div>}>
-            <Home />
-          </Suspense>
-        ),
+        path: 'movie-list',
+        element: <Home />,
+      },
+      {
+        path: 'movie-list/favorite',
+        element: <Favorite />,
+      },
+      {
+        path: 'movie-detail/:movieId',
+        element: <Movie />,
       },
     ],
   },
