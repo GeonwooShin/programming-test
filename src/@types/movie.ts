@@ -1,4 +1,4 @@
-export type LikedMoviesResponse = {
+export type MoviesResponse = {
   page: number;
   results: MovieProps[];
   total_pages: number;
@@ -8,8 +8,8 @@ export type LikedMoviesResponse = {
 export type MovieProps = {
   adult: boolean;
   backdrop_path: string | null;
-  genre_ids: number[];
-  id: number;
+  genre_ids: string[];
+  id: string;
   original_language: string;
   original_title: string;
   overview: string;
@@ -23,7 +23,7 @@ export type MovieProps = {
 };
 
 export type Genre = {
-  id: number;
+  id: string;
   name: string;
 };
 
@@ -52,13 +52,13 @@ export type MovieDetails = {
   budget: number;
   genres: Genre[];
   homepage: string | null;
-  id: number;
+  id: string;
   imdb_id: string | null;
   original_language: string;
   original_title: string;
   overview: string | null;
   popularity: number;
-  poster_path: string | null;
+  poster_path: string;
   production_companies: ProductionCompany[];
   production_countries: ProductionCountry[];
   release_date: string;
@@ -71,4 +71,11 @@ export type MovieDetails = {
   video: boolean;
   vote_average: number;
   vote_count: number;
+};
+
+export type MovieAccountState = {
+  id: string;
+  favorite: boolean;
+  rated: boolean;
+  watchlist: boolean;
 };
